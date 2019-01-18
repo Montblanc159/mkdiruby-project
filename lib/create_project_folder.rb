@@ -6,8 +6,18 @@ def check_if_user_gave_input
   abort("mkdir: missing input") if ARGV.empty?
 end
 
+
 def ruby_file_names
-  file_name = ARGV
+  puts "Entrez le nom de vos fichiers séparés d'un espace :"
+  print "> "
+  file_name = gets.chomp.split(" ")
+end
+
+def create_main_dir
+  main_dir = ARGV.join
+  Dir.mkdir(main_dir)
+  Dir.chdir(main_dir)
+  ARGV.clear
 end
 
 def create_folders
@@ -54,7 +64,6 @@ def create_files
 end
 
 def create_gem_file
-
   system("touch Gemfile")
   file = File.open("Gemfile", "w")
   file.puts('source "https://rubygems.org"')
@@ -73,7 +82,6 @@ def term_inits
 
   puts "Copy the adress of the main remote git :".colorize("blue")
   print "> "
-  ARGV.clear
   git_adress = gets.chomp
 
   system("git remote add origin #{git_adress}")
@@ -82,6 +90,7 @@ end
 
 def perform
   check_if_user_gave_input
+  create_main_dir
   create_folders
   create_gem_file
   create_files
