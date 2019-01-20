@@ -1,4 +1,4 @@
-# frozen_string_literal : true
+# frozen_string_literal: true
 
 require 'colorize'
 
@@ -30,7 +30,8 @@ def create_files
     system("touch lib/#{ruby_file}.rb")
     file = File.open("./lib/#{ruby_file}.rb", "w")
     file.puts("# frozen_string_literal : true")
-    file.puts("")
+    file.puts("require 'rb-readline'")
+    file.puts("require ''")
     file.puts("require 'pry'")
     file.puts("require 'dotenv'")
     file.puts("")
@@ -70,6 +71,7 @@ def create_gem_file
   file.puts("ruby '2.5.1'")
   file.puts("gem 'rubocop', '~> 0.57.2'")
   file.puts("gem 'rspec'")
+  file.puts("gem 'rb-readline'")
   file.puts("gem 'pry'")
   file.close
 end
