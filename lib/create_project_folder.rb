@@ -29,10 +29,11 @@ end
 
 def create_files
   system("touch app.rb")
-  file = File.open("app.rb")
+  file = File.open("./app.rb", "w")
   file.puts("# frozen_string_literal: true")
   file.puts("")
   file.close
+
   ruby_file_names.each do |ruby_file|
     system("touch lib/#{ruby_file}.rb")
     file = File.open("./lib/#{ruby_file}.rb", "w")
@@ -51,7 +52,7 @@ def create_files
     file.puts("require_relative '../lib/#{ruby_file}.rb'")
     file.close
 
-    file = File.open("app.rb")
+    file = File.open("./app.rb", "w")
     file.puts("require_relative: 'lib/#{ruby_file}'")
     file.close
   end
