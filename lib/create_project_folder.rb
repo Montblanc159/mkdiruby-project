@@ -29,7 +29,7 @@ def create_files
   ruby_file_names.each do |ruby_file|
     system("touch lib/#{ruby_file}.rb")
     file = File.open("./lib/#{ruby_file}.rb", "w")
-    file.puts("# frozen_string_literal : true")
+    file.puts("# frozen_string_literal: true")
     file.puts("require 'rb-readline'")
     file.puts("require 'pry'")
     file.puts("require 'dotenv'")
