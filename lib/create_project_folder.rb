@@ -29,7 +29,7 @@ end
 
 def create_files
   system("touch app.rb")
-  file = File.open("./app.rb", "w")
+  file = File.open("app.rb", "w")
   file.puts("# frozen_string_literal: true")
   file.puts("")
   file.close
@@ -38,6 +38,7 @@ def create_files
     system("touch lib/#{ruby_file}.rb")
     file = File.open("./lib/#{ruby_file}.rb", "w")
     file.puts("# frozen_string_literal: true")
+    file.puts("")
     file.puts("require 'rb-readline'")
     file.puts("require 'pry'")
     file.puts("require 'dotenv'")
@@ -52,9 +53,9 @@ def create_files
     file.puts("require_relative '../lib/#{ruby_file}.rb'")
     file.close
 
-    file = File.open("./app.rb", "w")
-    file.puts("require_relative: 'lib/#{ruby_file}'")
-    file.close
+    app = File.open("app.rb", "a")
+    app.puts("require_relative: 'lib/#{ruby_file}'")
+    app.close
   end
 
   system("touch .env")
