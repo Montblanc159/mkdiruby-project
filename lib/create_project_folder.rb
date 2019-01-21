@@ -31,7 +31,6 @@ def create_files
     file = File.open("./lib/#{ruby_file}.rb", "w")
     file.puts("# frozen_string_literal : true")
     file.puts("require 'rb-readline'")
-    file.puts("require ''")
     file.puts("require 'pry'")
     file.puts("require 'dotenv'")
     file.puts("")
