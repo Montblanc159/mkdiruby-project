@@ -86,6 +86,7 @@ def create_gem_file
   file.puts("gem 'rspec'")
   file.puts("gem 'rb-readline'")
   file.puts("gem 'pry'")
+  file.puts("gem 'dotenv'")
   file.close
 end
 
