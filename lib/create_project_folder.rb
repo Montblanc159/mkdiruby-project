@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require 'tty-prompt'
 require 'colorize'
+require 'pry'
 
 def check_if_user_gave_input
   abort("mkdir: missing input") if ARGV.empty?
@@ -26,6 +28,11 @@ def create_folders
 end
 
 def create_files
+  system("touch app.rb")
+  file = File.open("app.rb")
+  file.puts("# frozen_string_literal: true")
+  file.puts("")
+  file.close
   ruby_file_names.each do |ruby_file|
     system("touch lib/#{ruby_file}.rb")
     file = File.open("./lib/#{ruby_file}.rb", "w")
@@ -43,7 +50,12 @@ def create_files
     file.puts("")
     file.puts("require_relative '../lib/#{ruby_file}.rb'")
     file.close
+
+    file = File.open("app.rb")
+    file.puts("require_relative: 'lib/#{ruby_file}'")
+    file.close
   end
+
   system("touch .env")
   file = File.open(".env")
   file.close
