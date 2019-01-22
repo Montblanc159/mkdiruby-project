@@ -142,7 +142,8 @@ def term_inits
   puts "Git: files added".colorize(:green)
 
   prompt = TTY::Prompt.new
-  if prompt.yes?('Would you like to create a github repo ?')
+  puts ""
+  if prompt.yes?('Would you like to create a remote github repo ?')
     system("hub create")
     puts "Git: Remote github repo created".colorize(:green)
   else
@@ -159,7 +160,7 @@ def term_inits
   else
     puts "Git: No git remote added".colorize(:yellow)
   end
-  puts "Launching Atom".colorize(:blue)
+  puts "\n>>>>>>>>>> Launching Atom in folder <<<<<<<<<<\n".colorize(:blue)
   system("atom .")
 end
 
