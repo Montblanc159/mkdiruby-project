@@ -99,7 +99,7 @@ def create_files
   file.puts("")
   file.puts("**This is a Ruby project**")
   file.puts("")
-  file.puts("Created by")
+  file.puts("Made with ♥ by")
   file.close
   puts "File: README.md created".colorize(:green)
 end
